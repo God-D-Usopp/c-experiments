@@ -1,1 +1,1 @@
-Guys! this repository consists of our c++ experiments you can make use of this code at any time.Now there are only 10 programs.Remaining will be uploaded within a day or two
+Hey everyone! This repository contains our C++ experiment programs. You can use this code anytime. Currently, there are only 10 programs uploaded — the rest will be added within a day or two. You can find the files in the experiment folder above.
