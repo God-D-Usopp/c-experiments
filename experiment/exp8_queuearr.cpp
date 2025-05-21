@@ -76,8 +76,7 @@ int main() {
     int choice, value;
 
     do {
-        cout << "\nQueue Menu: \n1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n";
-        cout << "Enter your choice: ";
+        cout << "\nQueue Menu: 1. Enqueue | 2. Dequeue | 3. Display | 4. Exit\nEnter your choice: ";
         cin >> choice;
 
         switch (choice) {
