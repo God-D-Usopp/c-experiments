@@ -66,12 +66,37 @@ public:
 // Main function
 int main() {
     Stack s;
-    s.push(10);
-    s.push(20);
-    s.push(30);
-    s.display();
-    cout << "Top: " << s.peek() << endl;
-    s.pop();
-    s.display();
+    int choice, value;
+
+    do {
+        cout << "\nStack Menu: 1. Push 2. Pop 3. Peek 4. Display 5. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter value to push: ";
+                cin >> value;
+                s.push(value);
+                break;
+            case 2:
+                s.pop();
+                break;
+            case 3:
+                cout << "Top element: " << s.peek() << endl;
+                break;
+            case 4:
+                s.display();
+                break;
+            case 5:
+                cout << "Exiting...\n";
+                break;
+            default:
+                cout << "Invalid choice! Please try again.\n";
+        }
+
+    } while (choice != 5);
+
     return 0;
 }
+
