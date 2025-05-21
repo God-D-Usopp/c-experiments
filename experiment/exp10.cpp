@@ -1,5 +1,4 @@
 #include <iostream>
-#include <queue>
 using namespace std;
 
 class TreeNode {
@@ -50,35 +49,64 @@ public:
     // Level Order Traversal (Breadth-First)
     void levelOrder(TreeNode* node) {
         if (node == nullptr) return;
-        queue<TreeNode*> q;
-        q.push(node);
-        while (!q.empty()) {
-            TreeNode* current = q.front();
-            q.pop();
+        
+        TreeNode* queue[100];  // Static array for level-order traversal (queue)
+        int front = 0, rear = 0;
+        queue[rear++] = node;
+
+        while (front < rear) {
+            TreeNode* current = queue[front++];
             cout << current->data << " ";
-            if (current->left != nullptr) q.push(current->left);
-            if (current->right != nullptr) q.push(current->right);
+
+            if (current->left != nullptr)
+                queue[rear++] = current->left;
+            if (current->right != nullptr)
+                queue[rear++] = current->right;
         }
+    }
+
+    // Function to insert nodes based on user input (manual assignment)
+    void buildTreeFromUserInput() {
+        int rootValue;
+        cout << "Enter the value of root node: ";
+        cin >> rootValue;
+        root = new TreeNode(rootValue);
+
+        int leftValue, rightValue;
+        
+        // For the left and right children
+        cout << "Enter value for the left child of " << root->data << ": ";
+        cin >> leftValue;
+        root->left = new TreeNode(leftValue);
+
+        cout << "Enter value for the right child of " << root->data << ": ";
+        cin >> rightValue;
+        root->right = new TreeNode(rightValue);
+
+        // Further level for left child
+        cout << "Enter value for the left child of " << root->left->data << ": ";
+        cin >> leftValue;
+        root->left->left = new TreeNode(leftValue);
+
+        cout << "Enter value for the right child of " << root->left->data << ": ";
+        cin >> rightValue;
+        root->left->right = new TreeNode(rightValue);
+
+        // Further level for right child
+        cout << "Enter value for the left child of " << root->right->data << ": ";
+        cin >> leftValue;
+        root->right->left = new TreeNode(leftValue);
+
+        cout << "Enter value for the right child of " << root->right->data << ": ";
+        cin >> rightValue;
+        root->right->right = new TreeNode(rightValue);
     }
 };
 
 int main() {
     BinaryTree tree;
 
-    // Creating the same tree as before:
-    //         1
-    //       /   \
-    //      2     3
-    //     / \   / \
-    //    4   5 6   7
-
-    tree.root = new TreeNode(1);
-    tree.root->left = new TreeNode(2);
-    tree.root->right = new TreeNode(3);
-    tree.root->left->left = new TreeNode(4);
-    tree.root->left->right = new TreeNode(5);
-    tree.root->right->left = new TreeNode(6);
-    tree.root->right->right = new TreeNode(7);
+    tree.buildTreeFromUserInput();
 
     cout << "Inorder Traversal: ";
     tree.inorder(tree.root);
@@ -95,5 +123,7 @@ int main() {
     cout << "Level Order Traversal: ";
     tree.levelOrder(tree.root);
     cout << "\n";
-return 0;
+
+    return 0;
 }
+
